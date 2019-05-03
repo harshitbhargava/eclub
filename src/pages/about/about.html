@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar >
+    <ion-searchbar style="width:95%" placeholder="Search" [(ngModel)]=searchstr ></ion-searchbar>
+    <ion-buttons end>
+    <button ion-button (click)="searchuser()">Search</button>
+</ion-buttons>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color: rgb(245, 241, 248)">
+  <ion-item  *ngIf="flag" style="z-index: 2;background-color: rgb(222, 207, 233)" >
+    <div *ngFor="let item of userdata">
+      <p (click)="viewuser(item)" style="font-weight: bold;font-size:20px;">
+      {{item.Name}}
+    </p>
+    </div>
+  </ion-item>
+
+<ion-grid>
+    <ion-row>
+      <ion-col col-6 col-md-4 col-xl-3 class="catText" *ngFor="let pref of interestdata; let i = index">
+        <div (click)="viewGroup(i)" class="image-container" [style.background-image]="'url(' + pref.Pic + ')'">
+        </div>
+        <p style="padding: 1px"> {{pref.Name}}</p>
+      </ion-col>
+    </ion-row>
+    </ion-grid>
+
+</ion-content>

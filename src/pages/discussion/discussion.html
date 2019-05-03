@@ -1,0 +1,56 @@
+<!--
+  Generated template for the DiscussionPage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Discussion</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding style="background-color: rgb(245, 241, 248)">
+
+   
+
+
+  <ion-grid>
+    <ion-row>
+      <h4>{{post.Heading}}</h4>
+    </ion-row>
+    <ion-row>
+     <b> {{post.Content}}</b>
+      <br>
+      {{post.By}} <br> {{dated}}
+    </ion-row>
+
+    <ion-item style="padding-top:10px; ">
+        <ion-textarea class="ht" type="text" [(ngModel)] = "newCommMsg"></ion-textarea>       
+    </ion-item>
+      
+       
+        <ion-row>
+          <br>
+                  <button ion-button (click) = "comment()">Comment</button>
+
+        </ion-row>
+
+    <ion-row *ngFor = "let com of comBy; let i = index">
+      <div>
+        <b><p>{{comMsg[i]}}</p></b>
+        <p>{{com}} {{comTime[i]}}</p>
+      </div>
+  </ion-row>
+
+
+
+  <ion-grid>
+    <ion-row *ngIf = "flag">
+      <div>
+        <p>{{newCommMsg}}</p>
+      </div>
+    </ion-row>
+  </ion-grid>
+</ion-grid>
+</ion-content>

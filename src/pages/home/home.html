@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="myProfilePage()" >
+       <ion-avatar >
+      <img src= {{mydata.Pic_Url}} style="height: 30px; width: 30px;border-radius:50%">
+    </ion-avatar>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color: rgb(245, 241, 248);">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-7></ion-col>
+      <ion-col >
+        <button ion-button   style="padding-right: 10px;"(click) = "newPost()"><ion-icon name="add"></ion-icon>&nbsp;&nbsp;New Post</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+    <ion-card *ngFor = "let post of posts; let i = index" class="backColor">
+      <ion-card-content style="text-align: center;font-weight: bold;font-size:20px;">
+       {{post.Heading}}
+      </ion-card-content>
+     
+     <ion-row>
+      <p style="padding:10px">{{post.Content}}</p>
+     </ion-row>
+      <ion-row>
+        <ion-col style="padding-left: 10px;">
+            <h3 style="font-weight: bold;font-size:17px;">Post by:</h3>
+            <p>{{post.By}} at {{dated[i]}}</p>
+        </ion-col>
+      </ion-row>
+        <ion-row>
+        <ion-col col-4 style="padding-right: 10px;">
+            <h3 style="font-weight: bold;font-size:17px;">Comments</h3>
+         <ion-icon   style="padding-left: 5px;"  ios="ios-chatboxes" md="md-chatboxes"></ion-icon> <b>{{post.NoOfComments}}</b>
+        </ion-col>
+  
+        <ion-col col-8 style="padding-right: 10px;">
+          <!-- <h3 style="font-weight: bold;font-size:17px;">Comments</h3> -->
+       <!-- <ion-icon   style="padding-left: 5px;"  ios="ios-chatboxes" md="md-chatboxes"></ion-icon> <b>{{post.NoOfComments}}</b> -->
+       
+       
+       <button ion-button   style ="background-color:rgb(135, 125, 143)" (click) = "viewComments(i)"><ion-icon name="ios-arrow-down-outline"></ion-icon>&nbsp;&nbsp;View Commments</button>
+      </ion-col>
+      </ion-row>
+    </ion-card>
+    
+     <!-- <ion-grid>
+      <ion-row *ngFor = "let post of posts; let i = index" >
+        <ion-col>
+          <div>
+            <h4>{{post.Heading}}</h4>
+            <p>{{post.Content}}</p>
+            <p>{{post.By}} at {{dated[i]}}</p>
+             <ion-icon ios="ios-chatboxes" md="md-chatboxes"></ion-icon> <b>{{post.NoOfComments}}</b>
+          </div>
+          <button ion-button (click) = "viewComments(i)">View Commments</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button (click) = "newPost()">New Post</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>  -->
+  </ion-content>

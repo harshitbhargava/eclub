@@ -1,0 +1,150 @@
+<!--
+  Generated template for the CreateProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>createProfile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding style="background-color: rgb(245, 241, 248)">
+
+</ion-content> -->
+<ion-header>
+
+  <ion-navbar color="accent">
+    <ion-title>Create Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding >
+  <ion-grid>
+   <h3>Personal Details:</h3>
+        <ion-item>
+            <ion-label color="primary">Name</ion-label>
+            <ion-input type="text" [(ngModel)]="profiledata.Name"></ion-input>
+          </ion-item>
+        <!-- Name:
+        <input type="text" [(ngModel)]="profiledata.Name">
+    </ion-row> -->
+    <ion-item>
+        <ion-label color="primary">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="profiledata.Password"></ion-input>
+      </ion-item>
+    <!-- <ion-row>
+      Password:
+      <input type="password" [(ngModel)]="profiledata.Password">
+    </ion-row> -->
+    <ion-item>
+        <ion-label color="primary">Contact Number</ion-label>
+        <ion-input type="number" [(ngModel)]="profiledata.Contact"></ion-input>
+      </ion-item> <br>
+    <!-- <ion-row>
+      Contact number:
+      <input type="number" [(ngModel)] = "profiledata.Contact">
+    </ion-row> -->
+    <ion-row>
+      <h3>Product Details:</h3>
+      <!-- <div *ngFor = "let prod of profiledata.Products; let i = index">
+      <ion-item>
+        <ion-label color="primary">Name</ion-label>
+        <ion-input type="text" [(ngModel)]="profiledata.Products[i]"></ion-input> -->
+
+
+        <!-- <button ion-button (click)="editProduct(i)">Edit</button>
+        <div *ngIf = "flag">
+          <ion-item>
+            <ion-label color="primary">Description</ion-label>
+            <ion-input type = "text" [(ngModel)]="productdata.Description"></ion-input>
+            <ion-label color="primary">Interest</ion-label>
+            <ion-input type = "text" [(ngModel)]="productdata.Interest"></ion-input>
+            <ion-label color="primary">Price</ion-label>
+            <ion-input type = "text" [(ngModel)]="productdata.Price"></ion-input>
+          </ion-item>
+        </div> -->
+
+
+
+      <!-- </ion-item>
+    </div> -->
+     
+     </ion-row>
+    
+     
+     
+     <div >
+      <ion-segment [(ngModel)]="abc">
+   <ion-segment-button value="one" >
+      Edit Products
+   </ion-segment-button>
+   <ion-segment-button value="two">
+      Add Products
+   </ion-segment-button>
+      </ion-segment>
+   </div>
+
+   <div [ngSwitch]="abc">
+    <ion-list *ngSwitchCase="'one'">
+<ion-item>
+  <ion-thumbnail item-start>
+     
+       
+    <ion-list *ngFor = "let prod of profiledata.Products; let i = index" >
+       
+     <ion-card>
+        <ion-item><ion-label color="primary">Name</ion-label>
+            <ion-input type="text" [(ngModel)]="profiledata.Products[i]"></ion-input></ion-item>
+
+        <ion-item><ion-label color="primary">Description</ion-label>
+            <ion-input type = "text" [(ngModel)]="productdata[i].Description"></ion-input></ion-item>
+         <ion-item>   <ion-label color="primary">Interest</ion-label>
+            <ion-input type = "text" [(ngModel)]="productdata[i].Interest"></ion-input></ion-item>
+         <ion-item>   <ion-label color="primary">Price</ion-label>
+            <ion-input type = "text" [(ngModel)]="productdata[i].Price"></ion-input></ion-item>
+            <!-- <button ion-button block>Edit</button> -->
+        </ion-card>
+    
+    </ion-list>
+ 
+  </ion-thumbnail>
+</ion-item>
+</ion-list>
+
+    <ion-list *ngSwitchCase="'two'">
+<ion-item>
+  <ion-thumbnail item-end>
+    <ion-card>
+    <ion-item>
+      <ion-label color="primary">Name</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Price</ion-label>
+      <ion-input type="number" [(ngModel)]="price" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Interest</ion-label>
+      <ion-input type="text" [(ngModel)] ="interest" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary">Description</ion-label>
+      <ion-input type="text" [(ngModel)]="description" ></ion-input>
+    </ion-item>
+    <!-- <button ion-button block>Done</button> -->
+    </ion-card>
+  </ion-thumbnail>
+</ion-item>
+
+    </ion-list>
+    
+    </div>
+    
+  </ion-grid>
+  <button ion-button block (click)="savechanges()">Done</button>
+  
+</ion-content>

@@ -1,0 +1,116 @@
+<!--
+  Generated template for the MyProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>myProfile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-avatar item-start>
+      <img src={{profiledata.Pic_Url}} style="height: 100px; width: 100px;">
+    </ion-avatar>
+    <h2>{{profiledata.Name}}</h2>
+    <p>{{profiledata.Email}}</p>
+    <p>{{profiledata.Contact}}</p>
+    <p>{{profiledata.Work_Place}}</p>
+    <button ion-button (click)="editProfile()">Edit</button>
+    <button ion-button (click)="logout()">Logout</button>
+  </ion-item>
+
+  <ion-grid>
+
+      <div >
+          <ion-segment [(ngModel)]="abc">
+       <ion-segment-button value="one" >
+          Followers ({{profiledata.No_Followers}})
+       </ion-segment-button>
+       <ion-segment-button value="two">
+          Following ({{profiledata.No_Following}})
+       </ion-segment-button>
+          </ion-segment>
+       </div>
+   
+       <div [ngSwitch]="abc">
+           <ion-list *ngSwitchCase="'one'">
+       <ion-item>
+         <ion-thumbnail item-start>
+            <!-- ({{profiledata.No_Followers}}) -->
+           <ion-list *ngFor="let follow of followerList; let i = index" >
+             <ion-item (click)="viewUserProfile1(i)">
+              <div class="header">   <img src= {{follow.Pic_Url}} style="height: 30px; width: 30px;border-radius:50%"> {{follow.Name}}</div>
+             </ion-item>
+           </ion-list>
+         </ion-thumbnail>
+       </ion-item>
+       </ion-list>
+   
+           <ion-list *ngSwitchCase="'two'">
+       <ion-item>
+         <ion-thumbnail item-end>
+            <!-- ({{profiledata.No_Following}}) -->
+            <ion-list *ngFor="let follow of followingList; let i = index" >
+              <ion-item (click)="viewUserProfile2(i)">
+                <div class="header">   <img src= {{follow.Pic_Url}} style="height: 30px; width: 30px;border-radius:50%"> {{follow.Name}}</div>
+              </ion-item>
+            </ion-list>
+         </ion-thumbnail>
+       </ion-item>
+       
+           </ion-list>
+    <!-- <ion-row>
+      <ion-col col-6>
+        <button ion-button full>Followers ({{profiledata.No_Followers}})
+            
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button full> Following ({{profiledata.No_Following}})
+            
+        </button>
+      </ion-col>
+    </ion-row> -->
+    <ion-row>
+        <p style="font-weight: bold;font-size:20px">Posts:</p>
+    </ion-row>
+    <ul>
+   <li *ngFor="let post of profiledata.Posts; let i = index"> 
+    
+      <div>
+          <a routerLink="" (click)="viewDiscussion(i)" style="font-weight: bold;font-size:17px"> {{post}}</a>
+        <!-- {{post}} -->
+        <!-- <button ion-button (click)= "viewDiscussion(i)" style="float: right;">View</button> -->
+      </div>
+    </li>
+  </ul>
+    <ion-row>
+        <p style="font-weight: bold;font-size:20px">Preferences:</p>
+    </ion-row>
+    
+    <ul>
+    <li *ngFor="let pref of profiledata.Preferences; let i = index">
+      <div>
+          <a routerLink="" (click)="viewGroup(i)" style="font-weight: bold;font-size:17px;margin-top: 7px"> {{pref}}</a>
+        <!-- <button ion-button (click)= "viewGroup(i)" style="float: right;" >View</button> -->
+      </div>
+    </li>
+    </ul>
+    <ion-row>
+        <p style="font-weight: bold;font-size:20px">Products:</p>
+    </ion-row>
+    <ul>
+    <li *ngFor="let prod of productdata">
+      <p style="font-weight: bold;font-size:17px">{{prod.Name}}</p>
+      <p style="font-size:17px">{{prod.Description}}</p>
+      <p style="font-size:17px">Category: {{prod.Interest}}</p>
+      <p style="font-size:17px">Price: Rs.{{prod.Price}}</p>
+    </li>
+    </ul>
+  </div></ion-grid>
+
+</ion-content>

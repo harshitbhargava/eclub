@@ -1,0 +1,23 @@
+page-set-preferences {
+    .image-container{
+        background-size:cover;
+        min-height:120px;
+        border: 3px;
+        border-radius: 5%;
+        border-style: solid;
+        background-repeat: no-repeat;
+        border-color: rgb(59, 7, 107);
+      
+      }
+    .catText{
+      //padding: 10px;
+       text-align: center;
+        font-size:52;
+        font-family: 'Times New Roman', Times, serif;
+    }
+      .selected{
+        opacity:0.5;
+        color:#996;
+        
+      }
+}
